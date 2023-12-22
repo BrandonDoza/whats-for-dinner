@@ -25,3 +25,21 @@ var deserts = [
     'Apple Pie', 'Brownies', 'Pistachio Ice Cream', 'Popcorn', 
     'Skittles', 'Donuts', 'Cherry Pie'
 ]
+
+// functions
+function randomSide(sides) {
+    var i =  Math.floor(Math.random() * (sides.length));
+   return sides[i]
+}
+
+function randomMain(mains) {
+    var i = Math.floor(Math.random() * (mains.length));
+    return mains[i]
+}
+
+function randomDesert (deserts) {
+    var i = Math.floor(Math.random() * (deserts.length));
+    return deserts[i]
+}
+
+// function entireMeal ()
