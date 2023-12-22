@@ -32,7 +32,7 @@ main {
     align-items: center;
 }
 
-section {
+form {
     display: flex;
     flex-direction: column;
     height: 300px;
@@ -44,6 +44,12 @@ section {
 
 #output {
     display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 450px;
+    padding: 20px;
+    background: rgba(225, 225, 225, .9);
+    opacity: 90%;
     justify-content: center;
     align-items: center;
 }

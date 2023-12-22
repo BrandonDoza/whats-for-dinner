@@ -1,9 +1,20 @@
 // query selectors
+var sideRadio = document.querySelector('#side');
+var mainRadio = document.querySelector('#main-dish');
+var desertRadio = document.querySelector('#desert');
+// may not need querySelectorAll
 var radios = document.querySelectorAll('input[name="food"]');
 var letsCookBtn = document.querySelector('.lets-cook');
 var addRecipeBtn = document.querySelector('button');
+var outputContainer = document.querySelector('.output');
 
 //event listeners
+
+letsCookBtn.addEventListener('click', randomFunction);
+sideRadio.addEventListener('change', randomSide);
+mainRadio.addEventListener('change', randomMain);
+desertRadio.addEventListener('change', randomDesert);
+
 
 // Foods
 var sides = [
@@ -43,3 +54,9 @@ function randomDesert (deserts) {
 }
 
 // function entireMeal ()
+
+// I need a function that will give the output of the selected radio
+// button whe the lets cook button is clicked. 
+function output (randomFunction) {
+
+}
