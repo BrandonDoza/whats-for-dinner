@@ -1,3 +1,9 @@
+// query selectors
+var radios = document.querySelectorAll('input[name="food"]');
+var letsCookBtn = document.querySelector('.lets-cook');
+var addRecipeBtn = document.querySelector('button');
+
+//event listeners
 
 // Foods
 var sides = [
