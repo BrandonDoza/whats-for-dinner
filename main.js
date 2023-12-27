@@ -2,6 +2,7 @@
 var sideRadio = document.querySelector('#side');
 var mainRadio = document.querySelector('#main-dish');
 var desertRadio = document.querySelector('#desert');
+var entireMealRadio = document.querySelector('#entire-meal')
 var letsCookBtn = document.querySelector('.lets-cook');
 var outputContainer = document.querySelector('.output');
 
@@ -9,7 +10,7 @@ var outputContainer = document.querySelector('.output');
 var isSideChecked = false;
 var isMainChecked = false;
 var isDesertChecked = false;
-
+var isEntireChecked = false;
 
 //event listeners
 sideRadio.addEventListener('change', function() {
@@ -21,8 +22,11 @@ mainRadio.addEventListener('change', function() {
 desertRadio.addEventListener('change', function() {
     isDesertChecked = desertRadio.checked;
 });
+entireMealRadio.addEventListener('change', function() {
+    isEntireChecked = entireMealRadio.checked;
+})
 letsCookBtn.addEventListener('click', function() {
-    if (isSideChecked || isMainChecked || isDesertChecked) {
+    if (isSideChecked || isMainChecked || isDesertChecked || isEntireChecked) {
         if (isSideChecked) {
             var side = randomSide();
             outputValue(side);
@@ -32,10 +36,18 @@ letsCookBtn.addEventListener('click', function() {
         } else if (isDesertChecked) {
             var desert = randomDesert();
             outputValue(desert);
+        } else if (isEntireChecked) {
+            var entire = entireMeal();
+            outputValue(entire);
         }
         sideRadio.checked = false;
         mainRadio.checked = false;
         desertRadio.checked = false;
+        entireMealRadio.checked = false;
+        isSideChecked = false;
+        isMainChecked = false;
+        isDesertChecked = false;
+        isEntireChecked = false;
         isSideChecked = false;
         isMainChecked = false;
         isDesertChecked = false;
@@ -68,9 +80,11 @@ var deserts = [
 
 // functions
 function outputValue(food) {
-    outputContainer.innerHTML = `<em>You Should Make</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
-    // outputContainer.innerHTML += '<img src="./assets/selected_image.jpg" alt="selected image">';
-}
+    if (isSideChecked || isMainChecked || isDesertChecked) {
+        outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
+    } else if (isEntireChecked) {
+        outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: larger; font-weight: bold; text-align: center">${food}!</span>`;
+    }
 
 function getRandomFood(array) {
     var i =  Math.floor(Math.random() * (array.length));
@@ -91,7 +105,20 @@ function randomDesert() {
     return randDesert;
 }
 
-// function entireMeal ()
+
+function entireMeal () {
+    var randMain = randomMain();
+    var randSide = randomSide(); 
+    var randDesert = randomDesert();
+    return `${randMain} with a side of<br>${randSide}, and<br>${randDesert} for desert`
+}
+
+// function entireMeal (mains, sides, deserts) {
+//     var randMain = getRandomFood(mains);
+//     var randSide = getRandomFood(sides); 
+//     var randDesert = getRandomFood(deserts);
+//     return `${randMain}, ${randSide}, ${randDesert}`
+// }
 
 // I need a function that will give the output of the selected radio
 // button whe the lets cook button is clicked. 
