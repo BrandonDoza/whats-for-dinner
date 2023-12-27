@@ -3,15 +3,11 @@ var sideRadio = document.querySelector('#side');
 var mainRadio = document.querySelector('#main-dish');
 var desertRadio = document.querySelector('#desert');
 var letsCookBtn = document.querySelector('.lets-cook');
+var outputContainer = document.querySelector('#output');
 // may not need querySelectorAll
 // var selectedRadio = document.querySelectorAll('input[name="food"]:checked');
 // var addRecipeBtn = document.querySelector('button');
-// var outputContainer = document.querySelector('.output');
 
-// variables to store the checked state of radio buttons
-var isSideChecked = false;
-var isMainChecked = false;
-var isDesertChecked = false;
 
 //event listeners
 sideRadio.addEventListener('change', function() {
@@ -26,19 +22,22 @@ desertRadio.addEventListener('change', function() {
 letsCookBtn.addEventListener('click', function() {
     if (isSideChecked || isMainChecked || isDesertChecked) {
     if (isSideChecked) {
-        randomSide();
+        var side = randomSide();
+        outputValue(side);
     } else if (isMainChecked) {
-        randomMain();
+        var main = randomMain();
+        outputValue(main);
     } else if (isDesertChecked) {
-        randomDesert();
+        var desert = randomDesert();
+        outputValue(desert);
     } else {
         alert("you must choose one")
     }
-    }
+}
 });
 
 
-// Foods
+// Variables
 var sides = [
     'French Fries', 'Mashed Potatoes', 'Green Beans',
     'Broccoli', 'Sweet Potatoes', 'Sweet Corn', 'Spanish Rice',
@@ -59,24 +58,34 @@ var deserts = [
     'Skittles', 'Donuts', 'Cherry Pie'
 ]
 
+// Variables to store the checked state of radio buttons
+var isSideChecked = false;
+var isMainChecked = false;
+var isDesertChecked = false;
+
 // functions
+function outputValue(food) {
+    outputContainer.innerHTML = `You Should Make ${food}`;
+    // outputContainer.innerHTML += '<img src="./assets/selected_image.jpg" alt="selected image">';
+}
+
 function getRandomFood(array) {
     var i =  Math.floor(Math.random() * (array.length));
     return array[i];
 }
 function randomSide() {
     var randSide = getRandomFood(sides);
-    alert (randSide)
+    return randSide;
 }
 
 function randomMain() {
     var randMain = getRandomFood(mains);
-    alert(randMain)
+    return randMain;
 }
 
 function randomDesert() {
     var randDesert = getRandomFood(deserts);
-    alert(randDesert)
+    return randDesert;
 }
 
 // function entireMeal ()
