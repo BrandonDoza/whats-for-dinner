@@ -12,6 +12,7 @@ var isMainChecked = false;
 var isDesertChecked = false;
 var isEntireChecked = false;
 
+
 //event listeners
 sideRadio.addEventListener('change', function() {
     isSideChecked = sideRadio.checked;
@@ -48,9 +49,6 @@ letsCookBtn.addEventListener('click', function() {
         isMainChecked = false;
         isDesertChecked = false;
         isEntireChecked = false;
-        isSideChecked = false;
-        isMainChecked = false;
-        isDesertChecked = false;
     } else {
         alert("Choose One Please!");
     }
@@ -81,10 +79,11 @@ var deserts = [
 // functions
 function outputValue(food) {
     if (isSideChecked || isMainChecked || isDesertChecked) {
-        outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
+        outputContainer.innerHTML = `<em>You Should Make</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
     } else if (isEntireChecked) {
-        outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: larger; font-weight: bold; text-align: center">${food}!</span>`;
+        outputContainer.innerHTML = `<em>You Should Make</em><br><span style="font-size: larger; font-weight: bold; text-align: center">${food}!</span>`;
     }
+}
 
 function getRandomFood(array) {
     var i =  Math.floor(Math.random() * (array.length));
@@ -104,7 +103,6 @@ function randomDesert() {
     var randDesert = getRandomFood(deserts);
     return randDesert;
 }
-
 
 function entireMeal () {
     var randMain = randomMain();
