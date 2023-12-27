@@ -32,7 +32,7 @@ main {
     align-items: center;
 }
 
-section {
+form {
     display: flex;
     flex-direction: column;
     height: 300px;
@@ -42,8 +42,14 @@ section {
     opacity: 90%;
 }
 
-#output {
+.output {
     display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 450px;
+    padding: 20px;
+    background: rgba(225, 225, 225, .9);
+    opacity: 90%;
     justify-content: center;
     align-items: center;
 }
@@ -73,13 +79,6 @@ input {
     
 }
 
-button {
-    padding: 5px;
-    border-radius: 5px;
-    border: 0;
-   
-}
-
 .lets-cook {
     margin-left: 50px;
     margin-bottom: 50px;
@@ -87,6 +86,12 @@ button {
     width: 150px;
     background-color: #0fb9b1;
 }
+
+.show-hide {
+    display: none;
+}
+
+
 
 
 
