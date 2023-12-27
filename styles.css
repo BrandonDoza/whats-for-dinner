@@ -42,7 +42,7 @@ form {
     opacity: 90%;
 }
 
-#output {
+.output {
     display: flex;
     flex-direction: column;
     height: 300px;
@@ -79,13 +79,6 @@ input {
     
 }
 
-button {
-    padding: 5px;
-    border-radius: 5px;
-    border: 0;
-   
-}
-
 .lets-cook {
     margin-left: 50px;
     margin-bottom: 50px;
@@ -97,6 +90,8 @@ button {
 .show-hide {
     display: none;
 }
+
+
 
 
 

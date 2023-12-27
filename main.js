@@ -3,10 +3,12 @@ var sideRadio = document.querySelector('#side');
 var mainRadio = document.querySelector('#main-dish');
 var desertRadio = document.querySelector('#desert');
 var letsCookBtn = document.querySelector('.lets-cook');
-var outputContainer = document.querySelector('#output');
-// may not need querySelectorAll
-// var selectedRadio = document.querySelectorAll('input[name="food"]:checked');
-// var addRecipeBtn = document.querySelector('button');
+var outputContainer = document.querySelector('.output');
+
+// Variables to store the default checked state of radio buttons
+var isSideChecked = false;
+var isMainChecked = false;
+var isDesertChecked = false;
 
 
 //event listeners
@@ -21,19 +23,25 @@ desertRadio.addEventListener('change', function() {
 });
 letsCookBtn.addEventListener('click', function() {
     if (isSideChecked || isMainChecked || isDesertChecked) {
-    if (isSideChecked) {
-        var side = randomSide();
-        outputValue(side);
-    } else if (isMainChecked) {
-        var main = randomMain();
-        outputValue(main);
-    } else if (isDesertChecked) {
-        var desert = randomDesert();
-        outputValue(desert);
+        if (isSideChecked) {
+            var side = randomSide();
+            outputValue(side);
+        } else if (isMainChecked) {
+            var main = randomMain();
+            outputValue(main);
+        } else if (isDesertChecked) {
+            var desert = randomDesert();
+            outputValue(desert);
+        }
+        sideRadio.checked = false;
+        mainRadio.checked = false;
+        desertRadio.checked = false;
+        isSideChecked = false;
+        isMainChecked = false;
+        isDesertChecked = false;
     } else {
-        alert("you must choose one")
+        alert("Choose One Please!");
     }
-}
 });
 
 
@@ -48,7 +56,7 @@ var sides = [
 var mains = [
     'New York Strip', 'Grilled Chicken', 'Salmon Filet', 'Elk Medallions',
     'Halibut', 'Bratwurst', 'BBQ Shrimp', 'Lamb Kabab', 'Grilled Tofu', 
-    'Turkey Burger', 'Fried Chicken', 'Pork Chops', 'Beer Batered Cod'
+    'Turkey Burgers', 'Fried Chicken', 'Pork Chops', 'Beer Batered Cod'
 ]
 
 var deserts = [
@@ -58,14 +66,9 @@ var deserts = [
     'Skittles', 'Donuts', 'Cherry Pie'
 ]
 
-// Variables to store the checked state of radio buttons
-var isSideChecked = false;
-var isMainChecked = false;
-var isDesertChecked = false;
-
 // functions
 function outputValue(food) {
-    outputContainer.innerHTML = `You Should Make ${food}`;
+    outputContainer.innerHTML = `<em>You Should Make</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
     // outputContainer.innerHTML += '<img src="./assets/selected_image.jpg" alt="selected image">';
 }
 
@@ -96,3 +99,4 @@ function randomDesert() {
 //     // var rando = randomDesert();
 //     alert('This is what we found:' + randomDesert());
 // }
+// if (isSideChecked || isMainChecked || isDesertChecked) {
