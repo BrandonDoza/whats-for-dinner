@@ -1,7 +1,7 @@
 // query selectors
 var sideRadio = document.querySelector('#side');
 var mainRadio = document.querySelector('#main-dish');
-var desertRadio = document.querySelector('#desert');
+var dessertRadio = document.querySelector('#dessert');
 var entireMealRadio = document.querySelector('#entire-meal')
 var letsCookBtn = document.querySelector('.lets-cook');
 var outputContainer = document.querySelector('.output');
@@ -9,7 +9,7 @@ var outputContainer = document.querySelector('.output');
 // variables to store the default state of radio/clear button(s)
 var isSideChecked = false;
 var isMainChecked = false;
-var isDesertChecked = false;
+var isDessertChecked = false;
 var isEntireChecked = false;
 
 //event listeners
@@ -19,34 +19,34 @@ sideRadio.addEventListener('change', function() {
 mainRadio.addEventListener('change', function() {
     isMainChecked = mainRadio.checked;
 });
-desertRadio.addEventListener('change', function() {
-    isDesertChecked = desertRadio.checked;
+dessertRadio.addEventListener('change', function() {
+    isDessertChecked = dessertRadio.checked;
 });
 entireMealRadio.addEventListener('change', function() {
     isEntireChecked = entireMealRadio.checked;
 })
 letsCookBtn.addEventListener('click', function() {
-    if (isSideChecked || isMainChecked || isDesertChecked || isEntireChecked) {
+    if (isSideChecked || isMainChecked || isDessertChecked || isEntireChecked) {
         if (isSideChecked) {
             var side = randomSide();
             outputValue(side);
         } else if (isMainChecked) {
             var main = randomMain();
             outputValue(main);
-        } else if (isDesertChecked) {
-            var desert = randomDesert();
-            outputValue(desert);
+        } else if (isDessertChecked) {
+            var dessert = randomDessert();
+            outputValue(dessert);
         } else if (isEntireChecked) {
             var entire = entireMeal();
             outputValue(entire);
         } 
         sideRadio.checked = false;
         mainRadio.checked = false;
-        desertRadio.checked = false;
+        dessertRadio.checked = false;
         entireMealRadio.checked = false;
         isSideChecked = false;
         isMainChecked = false;
-        isDesertChecked = false;
+        isDessertChecked = false;
         isEntireChecked = false;
     var clearButton = document.createElement('button');
     clearButton.id = 'clearButton';
@@ -83,7 +83,7 @@ var mains = [
     'Turkey Burgers', 'Fried Chicken', 'Pork Chops', 'Beer Batered Cod'
 ]
 
-var deserts = [
+var desserts = [
     'Pumpkin Pie', 'Strawberry Shortcake', 'Vanilla Ice Cream',
     'Chocolate Cake', 'Banana Pudding', 'Chocolate Chip Cookies',
     'Apple Pie', 'Brownies', 'Pistachio Ice Cream', 'Popcorn', 
@@ -92,7 +92,7 @@ var deserts = [
 
 // functions
 function outputValue(food) {
-    if (isSideChecked || isMainChecked || isDesertChecked) {
+    if (isSideChecked || isMainChecked || isDessertChecked) {
         outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: xx-large; font-weight: bold">${food}!</span>`;
     } else if (isEntireChecked) {
         outputContainer.innerHTML = `<em>You Should Make:</em><br><span style="font-size: larger; font-weight: bold; text-align: center">${food}!</span>`;
@@ -113,15 +113,15 @@ function randomMain() {
     return randMain;
 }
 
-function randomDesert() {
-    var randDesert = getRandomFood(deserts);
-    return randDesert;
+function randomDessert() {
+    var randDessert = getRandomFood(desserts);
+    return randDessert;
 }
 
 function entireMeal () {
     var randMain = randomMain();
     var randSide = randomSide(); 
-    var randDesert = randomDesert();
-    return `${randMain} with a side of<br>${randSide}, and<br>${randDesert} for desert`
+    var randDessert = randomDessert();
+    return `${randMain} with a side of<br>${randSide}, and<br>${randDessert} for desert`
 }
 
